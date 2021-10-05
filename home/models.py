@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import related
+from django import forms
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
@@ -37,9 +38,26 @@ class HomePage(Page):
     ]
 
     class Meta:
-
         verbose_name = "KAAMOS STUDIO HOME PAGE"
         verbose_name_plural = "KAAMOS STUDIO HOME PAGES"
 
 class ProductPage(Page):
-    pass
+    templates = "templates/home/product_page.html"
+
+    description = models.CharField(max_length=1000, blank=False, null=True)
+    sku = models.IntegerField(blank=False, default=0)
+    price= models.FloatField(blank=False, default=0)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        blank=False,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("description"),
+        FieldPanel('sku', widget=forms.NumberInput()), 
+        FieldPanel('price', widget=forms.NumberInput()),
+        ImageChooserPanel("image"),
+    ]

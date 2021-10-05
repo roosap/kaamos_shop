@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+    <h1>PRODUCT PAGE</h1>
+
+    {% image self.image width-400 as product_image %}
+
+    <img 
+        src="{{product_image.url}}"
+        width="{{ product_image.width }}"
+        height="{{ product_image.height }}"
+        alt="{{ product_image.alt }}"/>
+    <h2>Name: {{self.title}}</h2>
+    <h3>Price: £{{self.price}}</h2>
+    <h2>{{self.description}}</h2>
+
+{% endblock %}
