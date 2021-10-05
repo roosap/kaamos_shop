@@ -24,10 +24,15 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <header>
+        <h1 class="text-4xl font-light">KAAMOS STUDIO</h1>
+    </header>
+    <body class="{% block body_class %}{% endblock %} font-sans text-gray-600text-2xl font-light">
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        <div class="min-h-screen bg-purple-50 p-6 flex flex-col place-items-center sm:p-12">
+            {% block content %}{% endblock %}
+        </div>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/kaamos_shop.js' %}"></script>
