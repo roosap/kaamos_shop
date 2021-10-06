@@ -9,6 +9,7 @@
 <div id="list-wrapper">
     <ul class="flex flex-row">
         {% for item in self.get_children.specific %}
+        <a href="{{item.get_url}}">
             <li class="p-10 content-start">
             {% image item.image height-200 as image %}
                 <div class="shadow-xl">
@@ -16,6 +17,7 @@
                 </div>
                 <p class="text-xl">{{item.title}}</p>
             </li>
+        </a>
         {% endfor %}
     </ul>
 </div>
