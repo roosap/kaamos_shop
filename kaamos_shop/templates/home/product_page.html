@@ -4,17 +4,23 @@
 
 {% block content %}
 
-    <h1>PRODUCT PAGE</h1>
+<h2 class="p-10 flex m-0 font-medium text-3xl">{{self.title}}</h2>
 
-    {% image self.image width-400 as product_image %}
+{% image self.image width-400 as product_image %}
 
-    <img 
-        src="{{product_image.url}}"
-        width="{{ product_image.width }}"
-        height="{{ product_image.height }}"
-        alt="{{ product_image.alt }}"/>
-    <h2>Name: {{self.title}}</h2>
-    <h3>Price: £{{self.price}}</h2>
-    <h2>{{self.description}}</h2>
+<div class="flex flex-cols-2">
+    <aside class="p-10">
+        <img 
+            src="{{product_image.url}}"
+            width="{{ product_image.width }}"
+            height="{{ product_image.height }}"
+            alt="{{ product_image.alt }}"/>
+    </aside>
+    <article class="p-10">
+        <h3>{{self.description}}</h3>
+        <br><br>
+        <h4 class="font-semibold text-xl">Price: £{{ self.price }}</h4>
+    </article>
+</div>
 
 {% endblock %}

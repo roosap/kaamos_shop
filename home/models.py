@@ -1,12 +1,14 @@
 from django.db import models
-from django.db.models.deletion import CASCADE
-from django.db.models.fields import related
-from django import forms
+from django.core.validators import MinValueValidator 
+from django import forms, template
+from django.contrib.humanize.templatetags.humanize import intcomma
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+register = template.Library()
 
 class HomePage(Page):
 
@@ -45,8 +47,8 @@ class ProductPage(Page):
     templates = "templates/home/product_page.html"
 
     description = models.CharField(max_length=1000, blank=False, null=True)
-    sku = models.IntegerField(blank=False, default=0)
-    price= models.FloatField(blank=False, default=0)
+    sku = models.IntegerField(blank=False, unique=True)
+    price = models.IntegerField(blank=False, default=10000, validators=[MinValueValidator(500)])
     image = models.ForeignKey(
         "wagtailimages.Image",
         blank=False,

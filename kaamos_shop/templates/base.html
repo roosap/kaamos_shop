@@ -25,12 +25,12 @@
     </head>
 
     <header>
-        <h1 class="text-4xl font-light">KAAMOS STUDIO</h1>
+        <h1 class="bg-gray-100 text-4xl p-6 flex flex-col place-items-center sm:p-12 font-light place-items-center">KAAMOS STUDIO</h1>
     </header>
-    <body class="{% block body_class %}{% endblock %} font-sans text-gray-600text-2xl font-light">
+    <body class="{% block body_class %}{% endblock %} font-sans text-gray-600 text-2xl font-light">
         {% wagtailuserbar %}
 
-        <div class="min-h-screen bg-purple-50 p-6 flex flex-col place-items-center sm:p-12">
+        <div class="min-h-screen p-6 flex flex-col place-items-center sm:p-12">
             {% block content %}{% endblock %}
         </div>
 
