@@ -3,6 +3,8 @@
 {% block content %}
 
         <h2 class="pt-10 pl-10 pr-10 pb-5 flex m-0 font-medium text-3xl">{{ self.banner_title }}</h2>
+        <h2 class="flex mb-10 font-extralight text-xl">{{self.banner_subtitle}}</h4>
+        
         {% for shop_page in self.get_children.specific%}
                 <a href="{{shop_page.get_url}}" class="hover:underline hover:bg-gray-100 p-10">{{ shop_page.title }}</a>
         {% endfor %}
