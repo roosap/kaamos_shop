@@ -43,6 +43,13 @@ class HomePage(Page):
         verbose_name = "KAAMOS STUDIO HOME PAGE"
         verbose_name_plural = "KAAMOS STUDIO HOME PAGES"
 
+    child_pages = ['kaamos_shop.ShopPage']
+
+class ShopPage(Page):
+    templates = "templates/home/shop_page.html"
+
+    child_pages = ['kaamos_shop.ProductPage']
+    
 class ProductPage(Page):
     templates = "templates/home/product_page.html"
 
@@ -63,8 +70,3 @@ class ProductPage(Page):
         FieldPanel('price', widget=forms.NumberInput()),
         ImageChooserPanel("image"),
     ]
-
-class ShopPage(Page):
-    templates = "templates/home/shop_page.html"
-
-    child_pages = ['kaamos_shop.ProductPage']
