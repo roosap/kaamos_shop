@@ -63,3 +63,8 @@ class ProductPage(Page):
         FieldPanel('price', widget=forms.NumberInput()),
         ImageChooserPanel("image"),
     ]
+
+class ShopPage(Page):
+    templates = "templates/home/shop_page.html"
+
+    child_pages = ['kaamos_shop.ProductPage']

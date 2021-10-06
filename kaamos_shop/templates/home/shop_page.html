@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+<h2 class="p-10 flex m-0 font-medium text-3xl">{{self.title}}</h2>
+
+<div id="list-wrapper">
+    <ul class="flex flex-row">
+        {% for item in self.get_children.specific %}
+            <li class="p-10 content-start">
+            {% image item.image height-200 as image %}
+                <div class="shadow-xl">
+                    <img src="{{image.url}}" class="p-5" />
+                </div>
+                <p class="text-xl">{{item.title}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
