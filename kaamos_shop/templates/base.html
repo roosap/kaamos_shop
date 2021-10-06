@@ -24,8 +24,8 @@
         {% endblock %}
     </head>
 
-    <header>
-        <h1 class="bg-gray-100 text-4xl p-6 flex flex-col place-items-center sm:p-12 font-light place-items-center">KAAMOS STUDIO</h1>
+    <header class="bg-gray-100 font-light">
+        <img src="{% static 'images/kaamos.JPG' %}" width="100" />
     </header>
     <body class="{% block body_class %}{% endblock %} font-sans bg-gray-50 text-gray-600 text-2xl font-light">
         {% wagtailuserbar %}
