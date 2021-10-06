@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepage',
             name='banner_subtitle',
-            field=wagtail.core.fields.RichTextField(default='test text'),
+            field=wagtail.core.fields.RichTextField(),
             preserve_default=False,
         ),
     ]

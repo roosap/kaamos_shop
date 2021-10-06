@@ -43,15 +43,18 @@ class HomePage(Page):
         verbose_name = "KAAMOS STUDIO HOME PAGE"
         verbose_name_plural = "KAAMOS STUDIO HOME PAGES"
 
-    child_pages = ['kaamos_shop.ShopPage']
+    child_pages = ['kaamos_shop.ShopPage', 'kaamos_about.AboutPage']
 
 class ShopPage(Page):
     templates = "templates/home/shop_page.html"
-
     child_pages = ['kaamos_shop.ProductPage']
-    
+
+class AboutPage(Page):
+    templates = "templates/about/about_page.html"
+
 class ProductPage(Page):
     templates = "templates/home/product_page.html"
+    max_count = 1
 
     description = models.CharField(max_length=1000, blank=False, null=True)
     sku = models.IntegerField(blank=False, unique=True)
