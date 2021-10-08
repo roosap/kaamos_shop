@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -8,14 +8,14 @@
 
 <div id="list-wrapper">
     <ul class="flex flex-row">
-        {% for item in self.get_children.specific %}
-        <a href="{{item.get_url}}" class="hover:bg-gray-100 hover:underline">
+        {% for item in self.get_children %}
+        <a href="{% pageurl item %}" class="hover:bg-gray-100 hover:underline">
             <li class="p-10">
-            {% image item.image height-200 as image %}
+            {% image item.specific.image height-200 as image %}
                 <div class="shadow-xl m-5">
                     <img src="{{image.url}}" class="p-5" />
                 </div>
-                <p class="text-lg text-center font-extralight">{{item.title}}</p>
+                <p class="text-lg text-center font-extralight">{{item.specific.title}}</p>
             </li>
         </a>
         {% endfor %}
