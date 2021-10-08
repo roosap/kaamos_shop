@@ -10,8 +10,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 register = template.Library()
 
 class HomePage(Page):
-
-    templates = "templates/home/home_page.html"
     max_count = 1
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
@@ -45,14 +43,12 @@ class HomePage(Page):
     child_pages = ['kaamos_shop.ShopPage', 'kaamos_about.AboutPage']
 
 class ShopPage(Page):
-    templates = "templates/home/shop_page.html"
     child_pages = ['kaamos_shop.ProductPage']
 
 class AboutPage(Page):
-    templates = "templates/about/about_page.html"
+    pass
 
 class ProductPage(Page):
-    templates = "templates/home/product_page.html"
     max_count = 1
 
     description = models.CharField(max_length=1000, blank=False, null=True)
