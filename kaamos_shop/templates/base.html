@@ -16,18 +16,19 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {# Global stylesheets #}
-        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/kaamos_shop.css' %}"> {% endcomment %}
         <link rel="stylesheet" href="{% static "css/tailwind-output.css" %}">
         {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <header class="bg-gray-100 font-light">
+    <header class="bg-gray-100 font-light flex items-center justify-between">
         <a href="/">
             <img src="{% static 'images/kaamos.JPG' %}" width="100" />
         </a>
+        <nav class="text-lg mr-10">
+            <a href="/products" class="p-5 hover:bg-gray-50 hover:underline hover:text-black">All Products</a>
+            <a href="/about" class="p-5 hover:bg-gray-50 hover:underline hover:text-black">About Us</a>
+        </nav>
     </header>
     <body class="{% block body_class %}{% endblock %} font-sans bg-gray-50 text-gray-600 text-2xl font-light">
         {% wagtailuserbar %}
@@ -36,11 +37,9 @@
             {% block content %}{% endblock %}
         </div>
 
-        {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/kaamos_shop.js' %}"></script>
 
         {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
 </html>

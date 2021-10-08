@@ -9,7 +9,7 @@
 <div id="list-wrapper">
     <ul class="flex flex-row">
         {% for item in self.get_children %}
-        <a href="{% pageurl item %}" class="hover:bg-gray-100 hover:underline">
+        <a href="{% pageurl item %}" class="hover:bg-gray-100 hover:underline hover:text-black">
             <li class="p-10">
             {% image item.specific.image height-200 as image %}
                 <div class="shadow-xl m-5">
