@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator 
 from django import forms, template
-from django.contrib.humanize.templatetags.humanize import intcomma
 
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
