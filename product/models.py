@@ -8,7 +8,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 class ProductIndexPage(Page):
-    # child_pages = ['kaamos_shop.ProductPage']
     pass
 
 class ProductPage(Page):
