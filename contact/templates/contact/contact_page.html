@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+    <div class="p-5 font-light self-center">{{self.intro|richtext}}</div>
+    
+    <br><br>
+
+    <form action="/contact-us/" method="POST">
+        {% csrf_token %}
+        <ul class="place-items-start">
+            {{ form.as_p }}
+        </ul>
+
+        <br>
+
+        <button type="submit" class="bg-gray-100 p-5 rounded-lg font-light text-sm text-gray-600 hover:underline hover:text-black">
+            Submit Form
+        </button>
+    </form>
+
+{% endblock %}

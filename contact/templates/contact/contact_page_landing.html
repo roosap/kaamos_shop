@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <p class="p-5 flex m-0 font-light text-lg">{{ self.thank_you_text|richtext }}</p>
+{% endblock %}
