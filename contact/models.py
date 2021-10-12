@@ -34,3 +34,5 @@ class ContactPage(AbstractEmailForm):
             FieldPanel("subject"),
         ], heading="Email Settings"),
     ]
+
+    subpage_types = []

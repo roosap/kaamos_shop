@@ -19,3 +19,5 @@ class AboutPage(Page):
         FieldPanel('about_text', classname="full"),
         ImageChooserPanel("image"),
     ]
+
+    subpage_types = []

@@ -8,7 +8,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 class ProductIndexPage(Page):
-    pass
+    subpage_types = ['product.ProductPage']
 
 class ProductPage(Page):
 
