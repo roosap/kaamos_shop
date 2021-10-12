@@ -4,9 +4,7 @@
 
 {% block content %}
 
-    <div class="p-5 font-light text-center">{{self.intro|richtext}}</div>
-    
-    <br>
+    <div class="p-5 mb-5 font-light text-center">{{self.intro|richtext}}</div>
 
     <form action="/contact-us/" method="POST">
         {% csrf_token %}
@@ -21,8 +19,6 @@
                 {% endif %}
             </div>
         {% endfor %}
-
-        {% comment %} {{ form.as_p }} {% endcomment %}
 
         <button type="submit" class="bg-blue-100 mt-5 p-5 font-light text-sm text-gray-600 hover:underline hover:text-black hover:bg-blue-200">
             Submit Form
