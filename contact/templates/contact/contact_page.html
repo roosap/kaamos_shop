@@ -2,9 +2,11 @@
 
 {% load wagtailcore_tags %}
 
+{% block body_class %}template-contactpage{% endblock %}
+
 {% block content %}
 
-    <div class="p-5 mb-5 font-light text-center">{{self.intro|richtext}}</div>
+    <div class="p-5 mb-5 font-light text-center">{{page.intro|richtext}}</div>
 
     <form action="/contact-us/" method="POST">
         {% csrf_token %}

@@ -2,13 +2,15 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% block body_class %}template-productindexpage{% endblock %}
+
 {% block content %}
 
-<h2 class="p-5 flex m-0 font-medium text-3xl">{{self.title}}</h2>
+<h2 class="p-5 flex m-0 font-medium text-3xl">{{page.title}}</h2>
 
 <div id="list-wrapper">
     <ul class="flex flex-row">
-        {% for item in self.get_children %}
+        {% for item in page.get_children %}
         <a href="{% pageurl item %}" class="hover:bg-gray-100 hover:underline hover:text-black">
             <li class="p-10">
             {% image item.specific.image height-200 as image %}

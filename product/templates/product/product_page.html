@@ -1,26 +1,22 @@
 {% extends "base.html" %}
 
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-productpage{% endblock %}
 
 {% block content %}
 
-<a href="/products" class="text-sm place-self-start p-2 hover:underline hover:bg-gray-100 hover:text-black">< Back to all products</a>
-<h2 class="p-10 flex m-0 font-medium text-3xl">{{self.title}}</h2>
-
-{% image self.image width-400 as product_image %}
+<a href="{{page.get_parent.url}}" class="text-sm place-self-start p-2 hover:underline hover:bg-gray-100 hover:text-black">< Back to all products</a>
+<h2 class="p-10 flex m-0 font-medium text-3xl">{{page.title}}</h2>
 
 <div class="flex flex-cols-2">
     <aside class="p-10">
-        <img 
-            src="{{product_image.url}}"
-            width="{{ product_image.width }}"
-            height="{{ product_image.height }}"
-            alt="{{ product_image.alt }}"/>
+    {% image page.image width-400 %}
     </aside>
     <article class="p-10">
-        <p class="text-xl text-center font-light">{{self.description}}</p>
+        <p class="text-xl text-center font-light">{{page.description}}</p>
         <br><br>
-        <p class="font-medium text-lg">Price: £{{ self.price }}</p>
+        <p class="font-medium text-lg">Price: £{{ page.price }}</p>
     </article>
 </div>
 
