@@ -29,6 +29,10 @@ INSTALLED_APPS = [
     'product',
     'about',
     'contact',
+    'shopping_cart',
+    # 'shopping_cart.apps.OnlineshopConfig',
+    # 'carton',
+    # 'shopping',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -163,3 +167,7 @@ WAGTAIL_SITE_NAME = "kaamos_shop"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# CART_PRODUCT_MODEL = 'product.models.Product'
+
+CART_SESSION_ID = 'shopping_cart'

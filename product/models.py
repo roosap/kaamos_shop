@@ -14,7 +14,7 @@ class ProductPage(Page):
 
     description = models.CharField(max_length=1000, blank=False, null=True)
     sku = models.IntegerField(blank=False, unique=True)
-    price = models.IntegerField(blank=False, default=10000, validators=[MinValueValidator(500)])
+    price = models.DecimalField(blank=False, default=100, max_digits=10, decimal_places=2, validators=[MinValueValidator(5)])
     image = models.ForeignKey(
         "wagtailimages.Image",
         blank=False,

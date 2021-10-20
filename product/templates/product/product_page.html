@@ -18,6 +18,11 @@
         <br><br>
         <p class="font-medium text-lg">Price: £{{ page.price }}</p>
     </article>
+    <form action="{% url "shopping_cart:cart_add" page.sku %}">
+        {{ cart_product_form }}
+        <button type="submit">Add to Basket</button>
+        {% csrf_token %}
+    </form>
 </div>
 
 {% endblock %}
