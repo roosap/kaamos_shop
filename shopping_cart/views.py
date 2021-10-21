@@ -17,11 +17,12 @@ def cart_add(request, product_sku):
 
 def cart_remove(request, product_sku):
     cart = Cart(request)
-    product = get_object_or_404(ProductPage, id=product_sku)
+    product = get_object_or_404(ProductPage, sku=product_sku)
     cart.remove(product)
     return redirect('shopping_cart:cart_detail')
 
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'shopping_cart/detail.html', {'shopping-cart': cart})
+    print("CART GOING IN", cart.cart)
+    return render(request, 'shopping_cart/detail.html', {'cart': cart.cart})

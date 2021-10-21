@@ -15,13 +15,16 @@ class Cart(object):
 
     def add(self, product, quantity=1, override_quantity=False):
         product_sku = str(product.sku)
+
         if product_sku not in self.cart:
-            self.cart[product_sku]={'quantity':0, 'price':str(product.price)}
+            self.cart[product_sku]={'quantity':0, 'price':str(product.price), 'description':str(product.description), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
 
         if override_quantity:
-            self.cart[product_sku]['quantity']=quantity
+            self.cart[product_sku]={'quantity': int(quantity), 'price':str(product.price), 'description':str(product.description), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
         else:
-            self.cart[product_sku]['quantity'] += quantity
+            updated_quantity = self.cart[product_sku]['quantity'] + quantity
+            self.cart[product_sku]={'quantity':updated_quantity, 'price':str(product.price), 'description':str(product.description), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
+
         self.save()
 
 
@@ -38,7 +41,7 @@ class Cart(object):
 
     def __iter__(self):
         product_skus = self.cart.keys()
-        products = ProductPage.objects.filter(id__in=product_skus)
+        products = ProductPage.objects.filter(sku__exact=product_skus)
 
         cart = self.cart.copy()
         for product in products:
@@ -46,7 +49,7 @@ class Cart(object):
 
         for item in cart.values():
             item['price']=Decimal(item['price'])
-            item['total_price']=item['price'] * item['quantity']
+            item['total_price']=item['price'] * Decimal(int((item['quantity'])))
             yield item
 
 
@@ -55,7 +58,7 @@ class Cart(object):
 
     
     def get_total_price(self):
-        return sum(Decimal(item['price'] * item['quantity'] for item in self.cart.values()))
+        return sum(Decimal(item['price']) * Decimal(item['quantity']) for item in self.cart.values())
 
 
     def clear(self):
