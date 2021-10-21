@@ -6,9 +6,9 @@ from django.views.decorators.http import require_POST
 from wagtail.core import hooks
 
 @require_POST
-def cart_add(request, product_id):
+def cart_add(request, product_sku):
     cart = Cart(request)
-    product = get_object_or_404(ProductPage, id=product_id)
+    product = get_object_or_404(ProductPage, sku=product_sku)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
@@ -16,15 +16,13 @@ def cart_add(request, product_id):
     return redirect('shopping_cart:cart_detail')
 
 
-@hooks.register
-def cart_remove(request, product_id):
+def cart_remove(request, product_sku):
     cart = Cart(request)
-    product = get_object_or_404(ProductPage, id=product_id)
+    product = get_object_or_404(ProductPage, sku=product_sku)
     cart.remove(product)
     return redirect('shopping_cart:cart_detail')
 
 
-@hooks.register
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'shopping_cart/detail.html', {'cart': cart})
