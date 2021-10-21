@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     {% for item in cart %}
-    {% with product=item.product %}
+    {% with product = item.product %}
     <tr>
         <td>
             <a href="{{product.get_url}}">

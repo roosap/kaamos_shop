@@ -13,7 +13,7 @@ urlpatterns = [
 
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('shopping-cart/', include('shopping_cart.urls', namespace='shopping-cart')),
+    path('cart/', include('shopping_cart.urls', namespace='cart')),
 
     path('search/', search_views.search, name='search'),
 
