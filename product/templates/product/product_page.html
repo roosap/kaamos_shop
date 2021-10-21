@@ -18,7 +18,7 @@
         <br><br>
         <p class="font-medium text-lg">Price: £{{ page.price }}</p>
     </article>
-    <form action="{% url "shopping_cart:cart_add" page.sku %}">
+    <form action="{% url "shopping_cart:cart_add" page.sku %}" method="post">
         {{ cart_product_form }}
         {% csrf_token %}
         <button type="submit">Add to Basket</button>
