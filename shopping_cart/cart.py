@@ -17,13 +17,13 @@ class Cart(object):
         product_sku = str(product.sku)
 
         if product_sku not in self.cart:
-            self.cart[product_sku]={'quantity':0, 'price':str(product.price), 'description':str(product.description), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
+            self.cart[product_sku]={'quantity':0, 'price':str(product.price), 'description':str(product.description), 'sku':int(product.sku), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
 
         if override_quantity:
-            self.cart[product_sku]={'quantity': int(quantity), 'price':str(product.price), 'description':str(product.description), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
+            self.cart[product_sku]={'quantity': int(quantity), 'price':str(product.price), 'description':str(product.description), 'sku':int(product.sku), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
         else:
             updated_quantity = self.cart[product_sku]['quantity'] + quantity
-            self.cart[product_sku]={'quantity':updated_quantity, 'price':str(product.price), 'description':str(product.description), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
+            self.cart[product_sku]={'quantity':updated_quantity, 'price':str(product.price), 'description':str(product.description), 'sku':int(product.sku), 'title':str(product.title), 'image':str(product.image.get_rendition('height-100').url)}
 
         self.save()
 

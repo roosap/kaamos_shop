@@ -24,5 +24,4 @@ def cart_remove(request, product_sku):
 
 def cart_detail(request):
     cart = Cart(request)
-    print("CART GOING IN", cart.cart)
     return render(request, 'shopping_cart/detail.html', {'cart': cart.cart})
