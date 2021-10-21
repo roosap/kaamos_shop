@@ -6,7 +6,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class HomePage(Page):
-    # max_count = 1
+    max_count = 1
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
     banner_subtitle = models.CharField(max_length=100, blank=True, null=True)

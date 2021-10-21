@@ -63,10 +63,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-<<<<<<< HEAD
-    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
-=======
->>>>>>> parent of c18d4f1... Add basic cart functionality
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 

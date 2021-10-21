@@ -20,8 +20,8 @@
     </article>
     <form action="{% url "shopping_cart:cart_add" page.sku %}">
         {{ cart_product_form }}
-        <button type="submit">Add to Basket</button>
         {% csrf_token %}
+        <button type="submit">Add to Basket</button>
     </form>
 </div>
 

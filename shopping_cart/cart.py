@@ -14,14 +14,14 @@ class Cart(object):
 
 
     def add(self, product, quantity=1, override_quantity=False):
-        product_id = str(product.sku)
-        if product_id not in self.cart:
-            self.cart[product_id]={'quantity':0, 'price':str(product.price)}
+        product_sku = str(product.sku)
+        if product_sku not in self.cart:
+            self.cart[product_sku]={'quantity':0, 'price':str(product.price)}
 
         if override_quantity:
-            self.cart[product_id]['quantity']=quantity
+            self.cart[product_sku]['quantity']=quantity
         else:
-            self.cart[product_id]['quantity'] += quantity
+            self.cart[product_sku]['quantity'] += quantity
         self.save()
 
 
@@ -30,15 +30,15 @@ class Cart(object):
 
 
     def remove(self, product):
-        product_id = str(product.sku)
-        if product_id in self.cart:
-            del self.cart[product_id]
+        product_sku = str(product.sku)
+        if product_sku in self.cart:
+            del self.cart[product_sku]
             self.save()
 
 
     def __iter__(self):
-        product_ids = self.cart.keys()
-        products = ProductPage.objects.filter(id__in=product_ids)
+        product_skus = self.cart.keys()
+        products = ProductPage.objects.filter(id__in=product_skus)
 
         cart = self.cart.copy()
         for product in products:
