@@ -9,6 +9,7 @@ def cart_add(request, product_sku):
     cart = Cart(request)
     product = get_object_or_404(ProductPage, sku=product_sku)
     form = CartAddProductForm(request.POST)
+    print(product.url)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'], override_quantity=cd['override'])
