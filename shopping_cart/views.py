@@ -3,7 +3,6 @@ from .cart import Cart
 from .forms import CartAddProductForm
 from product.models import ProductPage
 from django.views.decorators.http import require_POST
-from wagtail.core import hooks
 
 @require_POST
 def cart_add(request, product_sku):

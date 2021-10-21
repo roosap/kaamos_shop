@@ -4,8 +4,8 @@
 
 {% block content %}
 
-<h1>Shopping Cart</h1>
-<table class="cart">
+<h2 class="p-5 flex m-0 font-medium text-3xl">Shopping Cart</h2>
+<table>
     <thead>
     <tr>
         <th>Image</th>
@@ -33,19 +33,18 @@
             {% csrf_token %}
             </form>
         </td>
-        <td class="num">Rs{{ item.price }}</td>
+        <td class="num">£{{ item.price }}</td>
     </tr>
     {% endwith %}
     {% endfor %}
     <tr class="total">
         <td>Total</td>
         <td colspan="4"></td>
-        <td class="num">Rs{{ cart.get_total_price }}</td>
+        <td class="num">£{{ cart.get_total_price }}</td>
     </tr>
     </tbody>
 </table>
 <p>
-    {% comment %} <a href="{{url "product:product_list}}"></a> {% endcomment %}
     <a href="#">Checkout</a>
 </p>
 

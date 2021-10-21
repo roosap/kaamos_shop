@@ -30,9 +30,6 @@ INSTALLED_APPS = [
     'about',
     'contact',
     'shopping_cart',
-    # 'shopping_cart.apps.OnlineshopConfig',
-    # 'carton',
-    # 'shopping',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -69,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
-    # 'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'kaamos_shop.urls'
@@ -105,6 +102,7 @@ DATABASES = {
     }
 }
 
+SITE_ID = 1
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

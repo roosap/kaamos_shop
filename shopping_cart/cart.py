@@ -43,7 +43,7 @@ class Cart(object):
 
     def __iter__(self):
         product_skus = self.cart.keys()
-        products = ProductPage.objects.filter(id__in=product_skus)
+        products = [ProductPage.objects.filter(id__in=product_skus)]
 
         cart = self.cart.copy()
         for product in products:

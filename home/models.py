@@ -6,7 +6,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class HomePage(Page):
-    max_count = 1
+    # max_count = 1
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
     banner_subtitle = models.CharField(max_length=100, blank=True, null=True)
@@ -33,7 +33,7 @@ class HomePage(Page):
     ]
 
     class Meta:
-        verbose_name = "KAAMOS STUDIO HOME PAGE"
-        verbose_name_plural = "KAAMOS STUDIO HOME PAGES"
+        verbose_name = "Home Page"
+        verbose_name_plural = "Home Pages"
 
     subpage_types = ['about.AboutPage', 'contact.ContactPage', 'product.ProductIndexPage']
