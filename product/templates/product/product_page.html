@@ -14,15 +14,15 @@
     {% image page.image width-400 %}
     </aside>
     <article class="p-10">
-        <p class="text-xl text-center font-light">{{page.description}}</p>
+        <p class="text-xl font-light">{{page.description}}</p>
         <br><br>
-        <p class="font-medium text-lg">Price: £{{ page.price }}</p>
-    </article>
-    <form action="{% url "shopping_cart:cart_add" page.sku %}" method="post">
-        {{ cart_product_form }}
-        {% csrf_token %}
-        <button type="submit">Add to Basket</button>
+        <p class="font-medium text-lg">£{{ page.price }}</p>
+        <form action="{% url "shopping_cart:cart_add" page.sku %}" method="post">
+        {% comment %} {{ cart_product_form }} {% endcomment %}
+            {% csrf_token %}
+        <button type="submit" class="bg-blue-100 mt-5 p-5 font-light text-sm text-gray-600 hover:underline hover:text-black hover:bg-blue-200">Add to cart</button>
     </form>
+    </article>
 </div>
 
 {% endblock %}
