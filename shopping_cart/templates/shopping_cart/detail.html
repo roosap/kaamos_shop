@@ -3,6 +3,8 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% load mathfilters %}
+
 {% load static %}
 
 {% block content %}
@@ -33,9 +35,9 @@
         <td>{{product.title}}</td>
         <td>{{product.quantity}}</td>
         <td class="num">£{{ product.price }}</td>
-        {% comment %} {% if product.quantity > 1 %}
-        <td class="num">x{{product.quantity}}</td>
-        {% endif %} {% endcomment %}
+         {% with quantity=product.quantity price=product.price %}
+            <td class="num">= £{{ quantity|mul:price}}</td>
+        {% endwith %}
         <td>
             <form action="{% url "shopping_cart:cart_remove" key %}">
                 {% csrf_token %}
@@ -45,11 +47,6 @@
         <td></td>
     </tr>
     {% endfor %}
-    {% comment %} <tr class="total">
-        <td>Total</td>
-        <td colspan="4"></td>
-        <td class="num">£{{ cart.get_total_price }}</td>
-    </tr> {% endcomment %}
     </tbody>
 </table>
 <button class="bg-green-500 p-5 font-light text-sm text-gray-50 hover:underline hover:bg-green-600" href="#">Check out</button>
