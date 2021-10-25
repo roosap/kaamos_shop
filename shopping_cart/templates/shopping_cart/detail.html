@@ -35,9 +35,11 @@
         <td>{{product.title}}</td>
         <td>{{product.quantity}}</td>
         <td class="num">£{{ product.price }}</td>
-         {% with quantity=product.quantity price=product.price %}
+        {% if product.quantity > 1 %}
+        {% with quantity=product.quantity price=product.price %}
             <td class="num">= £{{ quantity|mul:price}}</td>
         {% endwith %}
+        {% endif %}
         <td>
             <form action="{% url "shopping_cart:cart_remove" key %}">
                 {% csrf_token %}
