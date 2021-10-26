@@ -25,4 +25,4 @@ def cart_remove(request, product_sku):
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'shopping_cart/detail.html', {'cart': cart.cart})
+    return render(request, 'shopping_cart/detail.html', {'cart': cart.cart, 'total': cart.get_total_price()})
